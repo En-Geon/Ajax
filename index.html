@@ -15,10 +15,8 @@
             nightDayHandler(this);
         ">
         <nav>       <!--네비게이션을 표시해주는 태그-->
-            <ol>
-                <li><a href="#!html" onclick = "fetchPage('html')">JavaScript란?</a></li>
-                <li><a href="#!css" onclick = "fetchPage('css')">변수와 상수</a></li>
-                <li><a href = "ex_03.html">연산자</a></li>
+            <ol id = "nav">
+                
             </ol>
         </nav>
         <article>   <!-- 문서에서 본문을 표시하는 태그-->
@@ -37,6 +35,11 @@
         } else {
             fetchPage('welcome');
         }
+        fetch('list').then(function(response) {
+                response.text().then(function(text) {
+                    document.querySelector('#nav').innerHTML = text;
+                 })
+            }); 
         </script>
     </body>
 </html>
