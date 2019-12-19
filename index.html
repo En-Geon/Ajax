@@ -8,7 +8,7 @@
     </head>
     <body>
         <header>     <!--간판과 같은 역할을 하는 정보의 태그-->
-            <h1><a href ="ex_index.html">JavaScript</a></h1>
+            <h1><a href ="#welcome">JavaScript</a></h1>
         </header>
             
         <input id = "nigth_day" type="button" value="night" onclick="
@@ -16,8 +16,8 @@
         ">
         <nav>       <!--네비게이션을 표시해주는 태그-->
             <ol>
-                <li><a onclick = "fetchPacge('html')">JavaScript란?</a></li>
-                <li><a onclick = "fetchPacge('css')">변수와 상수</a></li>
+                <li><a href="#!html" onclick = "fetchPage('html')">JavaScript란?</a></li>
+                <li><a href="#!css" onclick = "fetchPage('css')">변수와 상수</a></li>
                 <li><a href = "ex_03.html">연산자</a></li>
             </ol>
         </nav>
@@ -25,12 +25,17 @@
             
         </article>
         <script>
-        function fetchPacge(name){
+        function fetchPage(name){
             fetch(name).then(function(response) {
                 response.text().then(function(text) {
                     document.querySelector('article').innerHTML = text;
                  })
             }); 
+        }
+        if(location.hash) {
+            fetchPage(location.hash.substr(2));
+        } else {
+            fetchPage('welcome');
         }
         </script>
     </body>
